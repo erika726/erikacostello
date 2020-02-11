@@ -1,0 +1,63 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: import math
+
+def main():
+    print("Paint Job Estimator")
+    numSquareFeet = float(input("Enter the square footage for the paint job: "))
+    pricePerGallon = float(input("Enter the price of the paint per gallon: "))
+    print("\n")
+    #Call your modules below this comment
+    displayNumGallons(numSquareFeet)
+    displayLabor(numSquareFeet)
+    costOfPaint(numSquareFeet, pricePerGallon)
+    laborCost(numSquareFeet)
+    totalCost(numSquareFeet, pricePerGallon)
+
+#End Main
+
+#Create your modules below this comment
+def displayNumGallons(squareFeet):
+    gallons = squareFeet / 115
+    print("Gallons Required:", gallons)
+
+def displayLabor(squareFeet):
+    hours = squareFeet / 115 * 8
+    print("Hours Required:", hours)
+
+def costOfPaint(squareFeet, price):
+    gallons = squareFeet / 115
+    cost = gallons * price
+    print("Cost of Paint: $", cost)
+
+def laborCost(squareFeet):
+    hours = squareFeet / 115 * 8
+    cost = hours * 20
+    print("Cost of Labor: $", cost)
+    
+def totalCost(squareFeet, price):
+    paintCost = squareFeet / 115 * price
+    laborCost = squareFeet / 115 * 8 * 20
+    totalCost = paintCost + laborCost
+    print("Total Cost of Project: $", totalCost)
+
+
+
+if __name__ == '__main__':
+    main()
+
+
+        echo Add other actions to build,
+        echo test, and deploy your project.
